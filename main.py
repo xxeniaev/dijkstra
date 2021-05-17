@@ -1,6 +1,6 @@
 from reader import ReadFromFile as Reader
 from graph import Graph
-from alg import Finder
+from alg import DijkstraSearch
 
 if __name__ == '__main__':
     reader = Reader("in.txt")
@@ -11,7 +11,10 @@ if __name__ == '__main__':
     f.close()
 
     graph = Graph(params[0], params[1])
-    finder = Finder(graph)
+    searcher = DijkstraSearch(graph)
     print("Find the shortest path with Dijkstra")
-    print("1 -> 3:")
-    print(finder.shortest_path(params[2]-1, params[3]-1))
+    print("1 -> 4:")
+    print('res0: ', searcher.results)
+    searcher.shortest_path(params[2]-1, params[3]-1)
+    print('res1: ', searcher.results)
+    searcher.write_results()
