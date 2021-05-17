@@ -4,24 +4,16 @@ class ReadFromFile:
 
     def reading(self):
         with open(self.file_name, 'r') as f:
-            while True:
-                n = f.readline().replace('\\n', '')
-                if not n:
-                    break
-                if len(n.split(" ")) > 1:
-                    print("first string should consist one number")
-                    quit()
-                n = int(n)
+            n = int(f.readline().replace('\\n', ''))
 
-                i = 0
-                adj_list = []
-                while i < n:
-                    line = f.readline()
-                    adj_list.append(line.replace('\\n', '').split())
-                    i += 1
+            i = 0
+            adj_list = []
+            while i < n:
+                line = f.readline()
+                adj_list.append(line.replace('\\n', '').split())
+                i += 1
 
-                src = f.readline()
-                dest = f.readline()
+            src = int(f.readline().replace('\\n', ''))
+            dest = int(f.readline().replace('\\n', ''))
 
-        print(n, adj_list, src, dest)
         return (n, adj_list, src, dest)
